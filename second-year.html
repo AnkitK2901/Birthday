@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 2: The Highlight Reel</title>
-    
     <link rel="stylesheet" href="css/style.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <div class="page-wrapper second-year-page">
+        <div class="background-shapes">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
-    <div class="page-container page-second-year">
-        <div class="header">
-            <h1 class="fade-in-down">Chapter 2: The Highlight Reel</h1>
-            <p class="fade-in-down" style="animation-delay: 0.3s;">A look back at some of the fun times and crazy moments.</p>
+        <div class="fade-in-up" style="width: 100%; max-width: var(--content-max-width);">
+            <h1>The Highlight Reel</h1>
+            <p class="lead">A look back at some of the fun times and crazy moments that defined our journey.</p>
         </div>
 
         <div class="timeline">
@@ -46,20 +47,22 @@
                     <p>That moment of pure joy (and exhaustion) when we finally fixed that impossible bug in our code.</p>
                 </div>
             </div>
-            </div>
+        </div>
 
-        <div class="navigation-buttons">
-            <a href="third-year.html" class="button">Next Chapter →</a>
+        <div class="chapter-navigation fade-in-up">
+            <a href="first-year.html" class="nav-arrow nav-prev" aria-label="Previous Chapter">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+            </a>
+            <a href="index.html" class="nav-arrow nav-home" aria-label="Go to Home">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h7.5" /></svg>
+            </a>
+            <a href="third-year.html" class="nav-arrow nav-next" aria-label="Next Chapter">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </a>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <script>
-      AOS.init({
-        duration: 800, // Animation duration
-        once: true,    // Whether animation should happen only once
-      });
-    </script>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
