@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- Logic for Welcome Page Curtain Reveal ---
+    // --- Logic for Welcome Page Curtain Reveal (Refined) ---
     const curtains = document.querySelector('.reveal-curtains');
     if (curtains) {
-        // Hide the curtains after 2 seconds (animation is 1.5s + 0.5s delay)
-        setTimeout(() => {
+        const leftCurtain = curtains.querySelector('.left');
+
+        // This is more robust than a timer. It waits for the CSS animation to actually finish.
+        leftCurtain.addEventListener('animationend', () => {
             curtains.style.display = 'none';
-        }, 2000);
+        }, { once: true }); // { once: true } automatically removes the listener after it runs once.
     }
 
     // --- Logic for Chapter 2: The Highlight Reel (second-year.html) ---

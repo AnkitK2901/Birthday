@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday, Kirat!</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/images/fav.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/fav.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,23 +16,25 @@
 
 <body>
     <div class="page-wrapper final-wishes-page">
-        <canvas id="confetti-canvas"></canvas>
+        <canvas id="confetti-canvas" aria-hidden="true"></canvas>
         <div class="background-shapes">
-            <span></span><span></span><span></span><span></span><span></span>
+            <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </div>
 
-        <div class="letter-container fade-in-up">
-            <h1>Happy Birthday, Kirat!</h1>
+        <article class="letter-container fade-in-up">
+            <header>
+                 <h1>Happy Birthday, Kirat!</h1>
+            </header>
             <p>As I was putting this little journey together, it was amazing to look back and see how far we've come. From those first-year moments to now, you've been a truly wonderful part of my college experience.</p>
             <p>You are one of the kindest, smartest, and most genuine people I know. I hope your birthday is just as amazing as you are. Wishing you all the success and happiness in our final year and for all the incredible things you'll do in the future.</p>
             <p>Have the happiest of birthdays!</p>
-            <div class="signature">
+            <footer class="signature">
                 ~Ankit
-            </div>
-        </div>
+            </footer>
+        </article>
 
         <div class="navigation-buttons fade-in-up delay-2">
-            <a href="index.html" class="button button-gold">Start Over ✨</a>
+            <a href="index.html" class="button button-gold">Start Over <span aria-hidden="true">✨</span></a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
