@@ -1,16 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- Logic for Welcome Page Curtain Reveal (Refined) ---
-    const curtains = document.querySelector('.reveal-curtains');
-    if (curtains) {
-        const leftCurtain = curtains.querySelector('.left');
-
-        // This is more robust than a timer. It waits for the CSS animation to actually finish.
-        leftCurtain.addEventListener('animationend', () => {
-            curtains.style.display = 'none';
-        }, { once: true }); // { once: true } automatically removes the listener after it runs once.
-    }
-
     // --- Logic for Chapter 2: The Highlight Reel (second-year.html) ---
     if (typeof AOS !== 'undefined' && document.querySelector('.timeline')) {
         AOS.init({

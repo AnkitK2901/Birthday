@@ -1,5 +1,5 @@
 /* ===================================================================
-   Happy Birthday, Kirat! - Premium Redesign (2025) - IMPROVED VERSION
+   Happy Birthday, Kirat! - Cleaned Version
    =================================================================== */
 
 /* ==============================================
@@ -309,9 +309,17 @@ p {
     animation: pulse 2s infinite ease-in-out;
 }
 
-.anim-delay-1 { animation-delay: 1s; }
-.anim-delay-2 { animation-delay: 1.2s; }
-.anim-delay-3 { animation-delay: 1.4s; }
+.anim-delay-1 {
+    animation-delay: 1s;
+}
+
+.anim-delay-2 {
+    animation-delay: 1.2s;
+}
+
+.anim-delay-3 {
+    animation-delay: 1.4s;
+}
 
 .delay-1 {
     animation-delay: 0.2s;
@@ -574,7 +582,6 @@ p {
 
 .timeline-content {
     padding: 2rem;
-    /* Use solid color to prevent bleed-through and remove need for !important */
     background: #ffffff;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-lg);
@@ -861,157 +868,25 @@ p {
 }
 
 /* ==============================================
-   7. FINAL PAGE LAYOUT FIX
+   7. FINAL PAGE LAYOUT & SCROLLBAR HIDE
    ============================================== */
 .final-wishes-page.page-wrapper {
     padding-top: 2rem;
     padding-bottom: 2rem;
     gap: 2rem;
-    /* Adds space between letter and button */
 }
 
 .final-wishes-page .navigation-buttons {
     margin-top: 0;
-    /* Removes the old margin */
 }
 
-/* ==============================================
-   8. HIDE SCROLLBAR (Robust Version)
-   ============================================== */
-/* Hides scrollbar for Chrome, Safari, and Opera */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
     display: none;
 }
 
-/* Hides scrollbar for IE, Edge, and Firefox */
 html,
 body {
     -ms-overflow-style: none;
-    /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
-}
-
-/* ==============================================
-   9. CONFETTI POPPER REVEAL ANIMATION
-   ============================================== */
-#popper-reveal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #020617;
-    /* Starts with a dark background */
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease-out 1.5s;
-    /* Fades out after burst */
-}
-
-#popper-icon {
-    font-size: 100px;
-    animation: fadeInAndPulse 1.5s ease-in-out forwards;
-}
-
-#popper-icon.popped {
-    animation: pop 0.3s ease-in forwards;
-}
-
-#confetti-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.confetti-piece {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    animation: explode 1s ease-out forwards;
-}
-
-/* Hide main content initially, then fade it in */
-.content-container.initial-hidden {
-    opacity: 0;
-}
-
-.content-container.visible {
-    animation: fadeInContent 1s ease-out 0.5s forwards;
-}
-
-
-/* KEYFRAME ANIMATIONS */
-
-@keyframes fadeInAndPulse {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    50% {
-        transform: scale(1);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(0.9);
-        opacity: 1;
-    }
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(0.9);
-    }
-
-    100% {
-        transform: scale(2);
-        opacity: 0;
-    }
-}
-
-@keyframes explode {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(var(--x-end), var(--y-end)) rotate(720deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ==============================================
-   10. MOBILE OPTIMIZATIONS FOR REVEAL
-   ============================================== */
-.confetti-piece {
-    will-change: transform, opacity;
-}
-
-@media (max-width: 480px) {
-    #popper-icon {
-        font-size: 80px;
-    }
 }
