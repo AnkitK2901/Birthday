@@ -204,6 +204,21 @@ h1::after {
     border-radius: 2px;
 }
 
+.header-emoji {
+    font-size: 0.6em;
+    vertical-align: middle;
+}
+
+/* Adds space before an emoji that follows text */
+h1>span+.header-emoji {
+    margin-left: 0.25em;
+}
+
+/* Adds space after an emoji that's at the start */
+.header-emoji+span {
+    margin-left: 0.25em;
+}
+
 h2 {
     font-family: var(--font-heading);
     font-size: clamp(2rem, 6vw, 3.5rem);
@@ -467,6 +482,12 @@ p {
     background: linear-gradient(135deg, #145A32 0%, #1E8449 100%);
 }
 
+.second-year-page .content-header,
+.second-year-page .timeline {
+    position: relative;
+    z-index: 2;
+}
+
 .welcome-page h1 {
     color: var(--color-white);
     text-shadow: 0 0 20px rgba(252, 211, 77, 0.5);
@@ -527,6 +548,7 @@ p {
     box-shadow: var(--shadow-lg);
     transition: var(--transition-normal);
     aspect-ratio: 1/1;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .gallery-grid .lightbox-link {
@@ -556,6 +578,56 @@ p {
     transform: scale(1.05);
     box-shadow: var(--shadow-xl);
 }
+
+
+/* 2 */
+
+.gallery-grid2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-grid2 img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-normal);
+    aspect-ratio: 1/1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.gallery-grid2 .lightbox-link {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+.gallery-grid2 .lightbox-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: var(--transition-normal);
+}
+
+.gallery-grid2 .lightbox-link:hover::after {
+    opacity: 1;
+}
+
+.gallery-grid2 .lightbox-link:hover img {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
 
 /* Timeline Enhancements */
 .timeline {
@@ -667,40 +739,6 @@ p {
     color: var(--color-dark-text);
 }
 
-/* Masonry Grid Enhancements */
-.masonry-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.masonry-grid .grid-item {
-    flex: 1 0 calc(33.333% - 1rem);
-    min-width: 250px;
-    padding: 0.5rem;
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--border-radius);
-    transition: var(--transition-normal);
-}
-
-.masonry-grid .grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-xl);
-}
-
-.masonry-grid img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: calc(var(--border-radius) - 4px);
-    transition: var(--transition-normal);
-}
-
-.masonry-grid .grid-item:hover img {
-    transform: scale(1.03);
-}
 
 /* ==============================================
    5. FINAL WISHES PAGE - STYLES
@@ -881,12 +919,20 @@ p {
         padding: 15px 30px 15px 55px;
     }
 
-    .timeline-item::after {
-        left: 10px;
+    /* New, more robust centering method */
+    .timeline-item::after,
+    .timeline-item:nth-child(even)::after {
+        left: 22px;
+        /* Position the dot's left edge at the line's center */
+        top: 50px;
+        right: auto;
+        transform: translateX(-50%);
+        /* Shift the dot left by half of its own width */
     }
 
     .masonry-grid .grid-item {
-        flex: 1 0 100%;
+        flex: 1 0 calc(50% - 1rem);
+        /* This creates two columns */
     }
 
     .letter-container {
