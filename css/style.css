@@ -1,10 +1,10 @@
 /* ===================================================================
-   Happy Birthday, Kirat! - Cleaned Version
-   =================================================================== */
+   Happy Birthday, Kirat! - Final Refactored Version
+   =================================================================== */
 
 /* ==============================================
-   1. GLOBAL SETUP & CSS VARIABLES
-   ============================================== */
+   1. GLOBAL SETUP & CSS VARIABLES
+   ============================================== */
 :root {
     /* Color System */
     --color-white: #ffffff;
@@ -57,7 +57,16 @@
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+    /* Webkit browsers */
 }
 
 body {
@@ -70,9 +79,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Accessibility helper for loading states */
+[aria-busy="true"] {
+    visibility: hidden;
+}
+
 /* ==============================================
-   2. REUSABLE COMPONENTS & TYPOGRAPHY
-   ============================================== */
+   2. REUSABLE COMPONENTS & TYPOGRAPHY
+   ============================================== */
 .main-content {
     position: relative;
     z-index: 2;
@@ -105,6 +119,7 @@ body {
     cursor: pointer;
     min-width: 180px;
     text-align: center;
+    will-change: transform, box-shadow;
 }
 
 .button::before {
@@ -128,6 +143,11 @@ body {
     left: 100%;
 }
 
+.button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: var(--shadow-sm);
+}
+
 .button-gold {
     background: var(--gradient-gold);
     color: var(--color-dark-text);
@@ -138,6 +158,14 @@ body {
 .button-gold:hover {
     background: linear-gradient(135deg, #fde68a 0%, #fcd34d 50%, #fbbf24 100%);
     box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+}
+
+/* Focus states for accessibility */
+.button:focus,
+.nav-arrow:focus,
+.cta-link:focus {
+    outline: 3px solid var(--color-gold-accent);
+    outline-offset: 2px;
 }
 
 /* Navigation Buttons Container */
@@ -188,6 +216,7 @@ p {
     max-width: 65ch;
     margin: 0 auto 1.5rem;
     color: var(--color-light-text);
+    text-wrap: pretty;
 }
 
 .lead {
@@ -195,6 +224,9 @@ p {
     line-height: 1.5;
     margin-bottom: 2rem;
     opacity: 0.9;
+    max-width: 70ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Content Card Enhancements */
@@ -212,12 +244,13 @@ p {
     position: relative;
     overflow: hidden;
     transition: var(--transition-normal);
+    will-change: transform, box-shadow;
 }
 
 .content-card a {
     color: var(--color-light-text);
     text-decoration: underline;
-    text-underline-offset: 4px;
+    text-underline-offset: 0.25em;
     transition: var(--transition-fast);
 }
 
@@ -238,13 +271,14 @@ p {
 }
 
 .content-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    transform: translateY(-8px) rotate(0.5deg);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 2px var(--color-gold-light);
 }
 
 /* ==============================================
-   3. ENHANCED ANIMATIONS
-   ============================================== */
+   3. ENHANCED ANIMATIONS
+   ============================================== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -268,30 +302,26 @@ p {
 }
 
 @keyframes float {
-    0% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
 
     50% {
-        transform: translateY(-20px);
-    }
-
-    100% {
-        transform: translateY(0px);
+        transform: translateY(-15px);
     }
 }
 
 @keyframes pulse {
-    0% {
+
+    0%,
+    100% {
         transform: scale(1);
     }
 
     50% {
         transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
@@ -334,8 +364,8 @@ p {
 }
 
 /* ==============================================
-   4. PAGE-SPECIFIC STYLES & BACKGROUNDS
-   ============================================== */
+   4. PAGE-SPECIFIC STYLES & BACKGROUNDS
+   ============================================== */
 .page-wrapper {
     display: flex;
     flex-direction: column;
@@ -366,6 +396,9 @@ p {
     border-radius: 50%;
     filter: blur(20px);
     opacity: 0.7;
+    will-change: transform;
+    transform: translateZ(0);
+    /* Promotes GPU acceleration */
 }
 
 .background-shapes span:nth-child(1) {
@@ -419,6 +452,19 @@ p {
 .welcome-page {
     background: var(--gradient-primary);
     position: relative;
+}
+
+/* Added Page-Specific Backgrounds */
+.first-year-page {
+    background: linear-gradient(135deg, #0B2E40 0%, #1A5276 100%);
+}
+
+.second-year-page {
+    background: linear-gradient(135deg, #4A235A 0%, #7D3C98 100%);
+}
+
+.third-year-page {
+    background: linear-gradient(135deg, #145A32 0%, #1E8449 100%);
 }
 
 .welcome-page h1 {
@@ -657,10 +703,10 @@ p {
 }
 
 /* ==============================================
-   5. FINAL WISHES PAGE - STYLES
-   ============================================== */
+   5. FINAL WISHES PAGE - STYLES
+   ============================================== */
 .final-wishes-page {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg, #512E0B 0%, #92400E 100%);
     position: relative;
 }
 
@@ -729,8 +775,8 @@ p {
 }
 
 /* ==============================================
-   6. CHAPTER NAVIGATION & RESPONSIVE
-   ============================================== */
+   6. CHAPTER NAVIGATION & RESPONSIVE
+   ============================================== */
 .chapter-navigation {
     display: flex;
     justify-content: space-between;
@@ -816,6 +862,13 @@ p {
         padding: 2rem 1.5rem;
     }
 
+    /* Simplify background shapes on mobile */
+    .background-shapes span {
+        width: 80px !important;
+        height: 80px !important;
+        filter: blur(10px);
+    }
+
     .timeline::after {
         left: 20px;
     }
@@ -823,9 +876,9 @@ p {
     .timeline-item,
     .timeline-item:nth-child(even) {
         width: 100%;
-        padding-left: 55px;
-        padding-right: 15px;
         left: 0;
+        /* Adjusted padding */
+        padding: 15px 30px 15px 55px;
     }
 
     .timeline-item::after {
@@ -868,8 +921,8 @@ p {
 }
 
 /* ==============================================
-   7. FINAL PAGE LAYOUT & SCROLLBAR HIDE
-   ============================================== */
+   7. FINAL PAGE LAYOUT
+   ============================================== */
 .final-wishes-page.page-wrapper {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -878,15 +931,4 @@ p {
 
 .final-wishes-page .navigation-buttons {
     margin-top: 0;
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-    display: none;
-}
-
-html,
-body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
